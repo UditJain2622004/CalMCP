@@ -25,7 +25,7 @@ export function DesktopRail() {
       {/* Logo */}
       <div className={styles.logo}>
         <span className={styles.logoIcon}>🥗</span>
-        <span className={styles.logoText}>NutriTrack</span>
+        <span className={styles.logoText}>CalMCP</span>
       </div>
 
       {/* Primary nav */}

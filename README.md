@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-**NutriTrack** is a modern, privacy-focused, local-first calorie and nutrition tracking application built with **React**, **TypeScript**, **Vite**, and **Dexie (IndexedDB)**. It integrates seamlessly with browser AI agents using the **WebMCP (Model Context Protocol)** browser specification (`document.modelContext` / `navigator.modelContext`).
+**CalMCP** is a modern, privacy-focused, local-first calorie and nutrition tracking application built with **React**, **TypeScript**, **Vite**, and **Dexie (IndexedDB)**. It integrates seamlessly with browser AI agents using the **WebMCP (Model Context Protocol)** browser specification (`document.modelContext` / `navigator.modelContext`).
 
 ---
 
