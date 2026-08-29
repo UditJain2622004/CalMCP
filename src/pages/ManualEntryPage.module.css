@@ -1,0 +1,59 @@
+.page { padding: var(--space-4); max-width: var(--content-mobile); margin: 0 auto; padding-bottom: var(--space-8); }
+.header { display: flex; align-items: center; gap: var(--space-3); padding-top: var(--space-3); margin-bottom: var(--space-4); }
+.back {
+  background: none; border: 1px solid var(--color-border); border-radius: var(--radius-xs);
+  width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--color-text-muted); flex-shrink: 0;
+}
+.title { font-size: 22px; font-weight: 700; margin: 0; }
+
+.mealTypeRow { display: flex; gap: var(--space-1); margin-bottom: var(--space-4); }
+.mealTypeBtn {
+  flex: 1; padding: 8px 4px; border: 1px solid var(--color-border);
+  border-radius: var(--radius-xs); background: none; cursor: pointer;
+  font-size: 13px; font-weight: 500; color: var(--color-text-muted);
+  font-family: var(--font-body); transition: all var(--transition-fast);
+}
+.mealTypeBtnActive { background: var(--color-accent-soft); border-color: var(--color-accent); color: var(--color-accent); }
+
+.titleField { margin-bottom: var(--space-4); }
+.field { margin-bottom: var(--space-3); }
+.label { display: block; font-size: 12px; font-weight: 500; color: var(--color-text-muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.04em; }
+.unit { font-weight: 400; text-transform: none; letter-spacing: 0; }
+.input {
+  width: 100%; padding: 10px var(--space-3); border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm); font-size: 15px; font-family: var(--font-body);
+  color: var(--color-text); background: var(--color-surface); box-sizing: border-box;
+}
+.input:focus { outline: none; border-color: var(--color-accent); }
+
+.items { display: flex; flex-direction: column; gap: var(--space-3); margin-bottom: var(--space-3); }
+.itemCard {}
+.itemTopRow { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3); }
+.itemNum { font-size: 13px; font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.removeBtn { background: none; border: none; cursor: pointer; color: var(--color-danger); padding: 4px; display: flex; }
+
+.qtyRow { display: flex; gap: var(--space-2); }
+.nutritionGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-2); }
+.nutritionField {}
+
+.addItemBtn {
+  width: 100%; padding: var(--space-3); border: 2px dashed var(--color-border);
+  border-radius: var(--radius-md); background: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+  font-size: 14px; font-weight: 500; color: var(--color-text-muted);
+  font-family: var(--font-body); margin-bottom: var(--space-4);
+  transition: all var(--transition-fast);
+}
+.addItemBtn:hover { background: var(--color-surface-muted); color: var(--color-text); border-color: var(--color-border-strong); }
+
+.totals {
+  display: flex; align-items: baseline; flex-wrap: wrap; gap: var(--space-2);
+  padding: var(--space-3) var(--space-4); background: var(--color-accent-soft);
+  border-radius: var(--radius-sm); margin-bottom: var(--space-3);
+}
+.totalsLabel { font-size: 13px; font-weight: 500; color: var(--color-accent); }
+.totalsValue { font-size: 18px; font-weight: 700; color: var(--color-accent); }
+.totalsMacros { font-size: 13px; color: var(--color-accent); opacity: 0.8; }
+
+.error { color: var(--color-danger); font-size: 14px; margin-bottom: var(--space-3); }

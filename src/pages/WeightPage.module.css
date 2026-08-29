@@ -1,0 +1,36 @@
+.page { padding: var(--space-4); max-width: var(--content-mobile); margin: 0 auto; }
+.header { padding-top: var(--space-3); margin-bottom: var(--space-4); }
+.title { font-size: 26px; font-weight: 700; margin: 0; }
+.logCard { margin-bottom: var(--space-4); }
+.cardTitle { font-size: 16px; font-weight: 600; margin: 0 0 var(--space-3); }
+
+.form { display: flex; flex-direction: column; gap: var(--space-3); }
+.inputRow { display: flex; gap: var(--space-2); align-items: center; }
+.input {
+  flex: 1; padding: 12px var(--space-4); border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm); font-size: 18px; font-weight: 600;
+  font-family: var(--font-body); background: var(--color-surface);
+  color: var(--color-text); transition: border-color var(--transition-fast);
+}
+.input:focus { outline: none; border-color: var(--color-accent); }
+.unit { font-size: 16px; font-weight: 500; color: var(--color-text-muted); min-width: 24px; }
+.error { color: var(--color-danger); font-size: 13px; margin: 0; }
+
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); gap: var(--space-2); margin-bottom: var(--space-2); }
+.statCard { text-align: center; }
+.statLabel { display: block; font-size: 12px; font-weight: 500; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: var(--space-1); }
+.statValue { display: block; font-size: 22px; font-weight: 700; color: var(--color-text); }
+.statSub { display: block; font-size: 11px; color: var(--color-text-subtle); }
+.bmiNote { font-size: 12px; color: var(--color-text-subtle); margin: var(--space-1) 0 var(--space-4); line-height: 1.5; }
+
+.history { margin-top: var(--space-4); }
+.sectionTitle { font-size: 16px; font-weight: 600; margin: 0 0 var(--space-3); }
+.entryList { display: flex; flex-direction: column; border: 1px solid var(--color-border); border-radius: var(--radius-md); overflow: hidden; }
+.entry {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: var(--space-3) var(--space-4); border-bottom: 1px solid var(--color-border);
+}
+.entry:last-child { border-bottom: none; }
+.entryDate { font-size: 14px; color: var(--color-text); font-weight: 500; }
+.entryNote { display: block; font-size: 12px; color: var(--color-text-muted); }
+.entryWeight { font-size: 16px; font-weight: 700; color: var(--color-text); }

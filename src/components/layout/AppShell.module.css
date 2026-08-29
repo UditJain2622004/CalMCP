@@ -1,0 +1,23 @@
+.shell {
+  display: flex;
+  min-height: 100dvh;
+  background: var(--color-bg);
+}
+
+.main {
+  flex: 1;
+  min-width: 0;
+  /* Bottom padding for mobile nav + safe area */
+  padding-bottom: calc(var(--bottom-nav-height) + env(safe-area-inset-bottom, 0px));
+}
+
+@media (min-width: 1024px) {
+  .shell {
+    flex-direction: row;
+  }
+  .main {
+    /* Left padding for desktop rail */
+    padding-left: 240px;
+    padding-bottom: 0;
+  }
+}
