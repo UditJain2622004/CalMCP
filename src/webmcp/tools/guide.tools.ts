@@ -22,7 +22,7 @@ const GetAppGuideInputSchema = z.object({
 
 const GUIDES: Record<string, object> = {
   overview: {
-    description: 'NutriTrack is a local-first calorie and nutrition tracker. It does NOT include an AI model. You, as an external agent, provide analysis. The app stores data and exposes tools.',
+    description: 'CalMCPis a local-first calorie and nutrition tracker. It does NOT include an AI model. You, as an external agent, provide analysis. The app stores data and exposes tools.',
     capabilities: [
       'Manual meal logging',
       'AI-assisted meal logging via draft workflow',
@@ -149,10 +149,10 @@ export const getWorkflowStatusTool: RegisteredTool = {
       const status = {
         pendingCapture: pendingCapture
           ? {
-              captureId: pendingCapture.id,
-              createdAt: pendingCapture.createdAt,
-              mimeType: pendingCapture.mimeType,
-            }
+            captureId: pendingCapture.id,
+            createdAt: pendingCapture.createdAt,
+            mimeType: pendingCapture.mimeType,
+          }
           : null,
         pendingDrafts: pendingDrafts.map(d => ({
           id: d.id,

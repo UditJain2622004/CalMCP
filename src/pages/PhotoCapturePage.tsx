@@ -155,7 +155,7 @@ export default function PhotoCapturePage() {
           <div className={styles.clarification}>
             <Bot size={16} color="var(--color-text-muted)" aria-hidden="true" />
             <p>
-              <strong>Important:</strong> NutriTrack does not include an AI model. Your external agent reads the visible photo. No image data is sent to this app's servers — photos stay on your device.
+              <strong>Important:</strong> CalMCPdoes not include an AI model. Your external agent reads the visible photo. No image data is sent to this app's servers — photos stay on your device.
             </p>
           </div>
 

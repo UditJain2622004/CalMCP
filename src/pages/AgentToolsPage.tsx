@@ -144,7 +144,7 @@ export default function AgentToolsPage() {
         <summary className={styles.guideSummary}>How does agent logging work?</summary>
         <div className={styles.guideBody}>
           <p>
-            NutriTrack registers tools with your browser's <strong>WebMCP</strong> API (<code>document.modelContext</code>).
+            CalMCPregisters tools with your browser's <strong>WebMCP</strong> API (<code>document.modelContext</code>).
             When a compatible AI agent (e.g. Claude, Gemini) browses to this app, it can discover and call these tools.
           </p>
           <p>

@@ -197,7 +197,7 @@ export default function SettingsPage() {
       {/* Privacy Note */}
       <Card padding="md" className={styles.privacyCard} variant="muted">
         <p className={styles.privacyText}>
-          🔒 <strong>Your data stays on your device.</strong> NutriTrack stores everything in your browser's IndexedDB. Nothing is uploaded to any server. Photos never leave this device.
+          🔒 <strong>Your data stays on your device.</strong> CalMCPstores everything in your browser's IndexedDB. Nothing is uploaded to any server. Photos never leave this device.
         </p>
       </Card>
 

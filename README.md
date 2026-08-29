@@ -1,4 +1,4 @@
-# NutriTrack — Local-First Calorie & Nutrition Tracker with WebMCP
+# CalMCP— Local-First Calorie & Nutrition Tracker with WebMCP
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
