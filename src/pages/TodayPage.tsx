@@ -150,13 +150,13 @@ export default function TodayPage() {
             <div className={styles.calorieRow}>
               <Flame size={16} color="var(--color-accent)" aria-hidden="true" />
               <span className={styles.calorieLabel}>Calories</span>
-              <button
+              {/* <button
                 className={styles.setGoalLink}
                 onClick={() => navigate('/goals')}
                 style={{ marginLeft: 'auto', fontSize: '0.8rem' }}
               >
                 {summary?.caloriesTarget ? 'Edit goal ⚙️' : 'Set goal →'}
-              </button>
+              </button> */}
             </div>
             {summary?.caloriesTarget ? (
               <>
@@ -176,6 +176,13 @@ export default function TodayPage() {
                 <span className={styles.calorieOf}>kcal today</span>
               </div>
             )}
+            <button
+                className={styles.setGoalLink}
+                onClick={() => navigate('/goals')}
+                style={{ marginLeft: 'auto', fontSize: '0.8rem' }}
+              >
+                {summary?.caloriesTarget ? 'Edit goal ⚙️' : 'Set goal →'}
+              </button>
           </div>
         </div>
       </Card>

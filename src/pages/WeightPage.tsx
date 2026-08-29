@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Scale, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Scale, Plus, ArrowLeft } from 'lucide-react';
 import { weightService } from '@/domain/weight/weight.service';
 import { profileService } from '@/domain/profile/profile.service';
 import { AddWeightInputSchema } from '@/domain/weight/weight.schema';
@@ -14,6 +15,7 @@ import { useTrackerData } from '@/hooks/useTrackerData';
 import styles from './WeightPage.module.css';
 
 export default function WeightPage() {
+  const navigate = useNavigate();
   const [entries, setEntries] = useState<WeightEntry[]>([]);
   const [profile, setProfile] = useState<Profile | null>(null);
   const [goal, setGoal] = useState<Goal | null>(null);
@@ -85,6 +87,14 @@ export default function WeightPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
+        <button
+          className={styles.back}
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text)', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <ArrowLeft size={20} aria-hidden="true" />
+        </button>
         <h1 className={styles.title}>Weight</h1>
       </header>
 

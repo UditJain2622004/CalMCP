@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Bot, Shield, CheckCircle, XCircle, Clock, BookOpen } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Bot, Shield, CheckCircle, XCircle, Clock, BookOpen, ArrowLeft } from 'lucide-react';
 import { useWebMCP } from '@/webmcp/WebMCPProvider';
 import { ALL_TOOLS } from '@/webmcp/register-tools';
 import { Card } from '@/components/common/Card';
@@ -8,6 +9,7 @@ import type { AuditEvent } from '@/db/database';
 import styles from './AgentToolsPage.module.css';
 
 export default function AgentToolsPage() {
+  const navigate = useNavigate();
   const { isAvailable } = useWebMCP();
   const [auditLog, setAuditLog] = useState<AuditEvent[]>([]);
   const [loadingLog, setLoadingLog] = useState(true);
@@ -28,6 +30,14 @@ export default function AgentToolsPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
+        <button
+          className={styles.back}
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text)', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <ArrowLeft size={20} aria-hidden="true" />
+        </button>
         <Bot size={24} color="var(--color-accent)" aria-hidden="true" />
         <h1 className={styles.title}>Agent Tools</h1>
       </header>

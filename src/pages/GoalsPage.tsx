@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Target, Save } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Target, Save, ArrowLeft } from 'lucide-react';
 import { profileService } from '@/domain/profile/profile.service';
 import { Button } from '@/components/common/Button';
 import { Card } from '@/components/common/Card';
@@ -8,6 +9,7 @@ import { useTrackerData } from '@/hooks/useTrackerData';
 import styles from './GoalsPage.module.css';
 
 export default function GoalsPage() {
+  const navigate = useNavigate();
   const [goal, setGoal] = useState<Goal | null>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -55,12 +57,12 @@ export default function GoalsPage() {
     try {
       const g = await profileService.setGoal({
         type: form.type,
-        calorieTargetKcal: Number(form.calorieTargetKcal) || 2000,
+        calorieTargetKcal: Number(form.calorieTargetKcal) || 0,
         proteinTargetG: Number(form.proteinTargetG) || 0,
         carbsTargetG: Number(form.carbsTargetG) || 0,
         fatTargetG: Number(form.fatTargetG) || 0,
         fiberTargetG: form.fiberTargetG ? Number(form.fiberTargetG) : undefined,
-        waterTargetMl: Number(form.waterTargetMl) || 2000,
+        waterTargetMl: Number(form.waterTargetMl) || 0,
         targetWeightKg: form.targetWeightKg ? Number(form.targetWeightKg) : undefined,
         targetSource: 'manual',
       });
@@ -87,6 +89,14 @@ export default function GoalsPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
+        <button
+          className={styles.back}
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text)', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <ArrowLeft size={20} aria-hidden="true" />
+        </button>
         <Target size={24} color="var(--color-accent)" aria-hidden="true" />
         <h1 className={styles.title}>Goals</h1>
       </header>
@@ -107,7 +117,7 @@ export default function GoalsPage() {
         <Card padding="lg" className={styles.section}>
           <h2 className={styles.sectionTitle}>Calorie Budget</h2>
           <div className={styles.field}>
-            <label className={styles.label} htmlFor="calories">Daily Calories (kcal) *</label>
+            <label className={styles.label} htmlFor="calories">Daily Calories (kcal)</label>
             <input
               id="calories"
               type="number"
@@ -116,7 +126,7 @@ export default function GoalsPage() {
               value={form.calorieTargetKcal}
               onChange={update('calorieTargetKcal')}
               className={styles.input}
-              required
+              // required
               placeholder="e.g. 2000"
             />
           </div>

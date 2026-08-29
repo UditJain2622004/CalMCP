@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
-import { Droplets, Plus } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Droplets, Plus, ArrowLeft } from 'lucide-react';
 import { hydrationService } from '@/domain/hydration/hydration.service';
 import { profileService } from '@/domain/profile/profile.service';
 import { displayWater, normalizeWaterToMl } from '@/domain/shared/units';
@@ -13,6 +14,7 @@ import styles from './HydrationPage.module.css';
 const QUICK_OPTIONS = [150, 250, 330, 500, 750];
 
 export default function HydrationPage() {
+  const navigate = useNavigate();
   const [entries, setEntries] = useState<WaterEntry[]>([]);
   const [total, setTotal] = useState(0);
   const [target, setTarget] = useState<number | null>(null);
@@ -61,6 +63,14 @@ export default function HydrationPage() {
   return (
     <div className={styles.page}>
       <header className={styles.header}>
+        <button
+          className={styles.back}
+          onClick={() => navigate(-1)}
+          aria-label="Go back"
+          style={{ background: 'none', border: 'none', cursor: 'pointer', color: 'var(--color-text)', padding: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+        >
+          <ArrowLeft size={20} aria-hidden="true" />
+        </button>
         <h1 className={styles.title}>Hydration</h1>
         <span className={styles.date}>
           {new Date(today + 'T00:00:00').toLocaleDateString(undefined, { weekday: 'short', month: 'short', day: 'numeric' })}
