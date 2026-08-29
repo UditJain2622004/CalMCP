@@ -18,8 +18,11 @@ import {
 import { getDailySummaryTool, getProgressReportTool } from './tools/report.tools';
 import { logWeightTool, getWeightProgressTool } from './tools/body.tools';
 import { logWaterTool, getHydrationSummaryTool } from './tools/hydration.tools';
+import { searchProductsTool } from './tools/search_products.tool';
 
 const ALL_TOOLS = [
+  // Hackathon required tool
+  searchProductsTool,
   // Meta / guide
   getAppGuideTool,
   getWorkflowStatusTool,
