@@ -136,18 +136,27 @@ export default function TodayPage() {
       {/* Calorie budget card */}
       <Card className={styles.calorieCard} padding="lg">
         <div className={styles.calorieContent}>
-          <ProgressRing
-            percent={caloriePercent}
-            size={120}
-            strokeWidth={10}
-            label={String(summary?.caloriesConsumed ?? 0)}
-            sublabel="eaten"
-            overTarget={isOverCalorie}
-          />
+          <div onClick={() => navigate('/goals')} style={{ cursor: 'pointer' }} title="Edit Goals">
+            <ProgressRing
+              percent={caloriePercent}
+              size={120}
+              strokeWidth={10}
+              label={String(summary?.caloriesConsumed ?? 0)}
+              sublabel="eaten"
+              overTarget={isOverCalorie}
+            />
+          </div>
           <div className={styles.calorieMeta}>
             <div className={styles.calorieRow}>
               <Flame size={16} color="var(--color-accent)" aria-hidden="true" />
               <span className={styles.calorieLabel}>Calories</span>
+              <button
+                className={styles.setGoalLink}
+                onClick={() => navigate('/goals')}
+                style={{ marginLeft: 'auto', fontSize: '0.8rem' }}
+              >
+                {summary?.caloriesTarget ? 'Edit goal ⚙️' : 'Set goal →'}
+              </button>
             </div>
             {summary?.caloriesTarget ? (
               <>
@@ -167,17 +176,73 @@ export default function TodayPage() {
                 <span className={styles.calorieOf}>kcal today</span>
               </div>
             )}
-            {!summary?.caloriesTarget && (
-              <button
-                className={styles.setGoalLink}
-                onClick={() => navigate('/goals')}
-              >
-                Set calorie goal →
-              </button>
-            )}
           </div>
         </div>
       </Card>
+
+      {/* Quick Access Bar for Mobile */}
+      <div style={{ display: 'flex', gap: '8px', marginBottom: '16px' }}>
+        <button
+          onClick={() => navigate('/hydration')}
+          style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            padding: '10px',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '12px',
+            color: 'var(--color-text)',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          <Droplets size={16} color="var(--color-fat)" /> Hydration
+        </button>
+        <button
+          onClick={() => navigate('/weight')}
+          style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            padding: '10px',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '12px',
+            color: 'var(--color-text)',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          <TrendingUp size={16} color="var(--color-protein)" /> Weight
+        </button>
+        <button
+          onClick={() => navigate('/goals')}
+          style={{
+            flex: 1,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '6px',
+            padding: '10px',
+            background: 'var(--color-surface)',
+            border: '1px solid var(--color-border)',
+            borderRadius: '12px',
+            color: 'var(--color-text)',
+            fontSize: '0.85rem',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
+          ⚙️ Goals
+        </button>
+      </div>
 
       {/* Macro cards */}
       <div className={styles.macroGrid} role="group" aria-label="Macro nutrients">
@@ -206,11 +271,12 @@ export default function TodayPage() {
 
       {/* Water card */}
       <Card className={styles.waterCard} padding="md">
-        <div className={styles.waterHeader}>
+        <div className={styles.waterHeader} onClick={() => navigate('/hydration')} style={{ cursor: 'pointer' }}>
           <div className={styles.waterInfo}>
             <div className={styles.waterIconRow}>
               <Droplets size={18} color="var(--color-fat)" aria-hidden="true" />
               <span className={styles.waterLabel}>Hydration</span>
+              <span style={{ marginLeft: 'auto', fontSize: '0.8rem', color: 'var(--color-accent)' }}>View log →</span>
             </div>
             <div className={styles.waterAmount}>
               <span className={styles.waterConsumed}>
@@ -319,11 +385,11 @@ function MacroCard({ label, consumed, target, unit, color }: MacroCardProps) {
     <Card padding="sm" className={styles.macroCard}>
       <div className={styles.macroTop}>
         <span className={styles.macroLabel}>{label}</span>
-        <span className={styles.macroConsumed} style={{ color }}>
+        {/* <span className={styles.macroConsumed} style={{ color }}>
           {Math.round(consumed * 10) / 10}{unit}
-        </span>
+        </span> */}
       </div>
-      {target && (
+      {target ? (
         <>
           <div className={styles.macroBar}>
             <div
@@ -335,8 +401,16 @@ function MacroCard({ label, consumed, target, unit, color }: MacroCardProps) {
               aria-label={`${label}: ${Math.round(consumed)}${unit} of ${target}${unit}`}
             />
           </div>
-          <span className={styles.macroTarget}>/ {target}{unit}</span>
+          <span className={styles.macroTarget}><span className={styles.macroConsumed} style={{ color }}>
+          {Math.round(consumed * 10) / 10}{unit}
+        </span>/ {target}{unit}</span>
         </>
+      ) : (
+        <div className={styles.macroTarget}>
+          <span className={styles.macroConsumed} style={{ color }}>
+            {Math.round(consumed * 10) / 10}{unit}
+          </span>
+        </div>
       )}
     </Card>
   );

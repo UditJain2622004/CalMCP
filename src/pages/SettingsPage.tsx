@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { User, Globe, Scale, Droplets, Save, ChevronRight, Trash2, AlertTriangle } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { User, Globe, Scale, Droplets, Save, ChevronRight, Trash2, AlertTriangle, Target, Bot } from 'lucide-react';
 import { profileService } from '@/domain/profile/profile.service';
 import { Button } from '@/components/common/Button';
 import { Card } from '@/components/common/Card';
@@ -11,6 +12,7 @@ import styles from './SettingsPage.module.css';
 const APP_VERSION = '1.0.0';
 
 export default function SettingsPage() {
+  const navigate = useNavigate();
   const [profile, setProfile] = useState<Profile | null>(null);
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
@@ -83,6 +85,37 @@ export default function SettingsPage() {
       <header className={styles.header}>
         <h1 className={styles.title}>Settings</h1>
       </header>
+
+      {/* Quick Navigation Section */}
+      <section className={styles.section}>
+        <h2 className={styles.sectionTitle}>
+          <Target size={16} aria-hidden="true" />
+          Quick Navigation
+        </h2>
+        <Card padding="none">
+          {[
+            { label: 'Nutritional Goals & Calorie Targets', route: '/goals', icon: Target },
+            { label: 'Weight Tracking & Weigh-ins', route: '/weight', icon: Scale },
+            { label: 'Hydration & Water Logging', route: '/hydration', icon: Droplets },
+            { label: 'WebMCP Agent Tools Catalog', route: '/agent-tools', icon: Bot },
+          ].map(({ label, route, icon: Icon }, idx) => (
+            <div key={route}>
+              {idx > 0 && <div className={styles.infoRowDivider} />}
+              <div
+                className={styles.infoRow}
+                onClick={() => navigate(route)}
+                style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}
+              >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Icon size={18} color="var(--color-accent)" />
+                  <span style={{ fontWeight: 500 }}>{label}</span>
+                </div>
+                <ChevronRight size={18} color="var(--color-text-secondary)" />
+              </div>
+            </div>
+          ))}
+        </Card>
+      </section>
 
       <form onSubmit={handleSave}>
         {/* Profile */}
